@@ -34,7 +34,6 @@ function magicwalletGetBtsAccount() {
   return new Promise(function (resolve, reject) {
     if (!magicwallet_bts_account) {
       var get_bts_account_interval = setInterval(function () {
-        console.log(1)
         var bts_account = magicwallet_bts_account;
         if (bts_account) {
           resolve(bts_account);
