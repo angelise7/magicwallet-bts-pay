@@ -1,0 +1,19 @@
+{
+  "name": "magicwallet-bts-pay",
+  "version": "1.0.0",
+  "description": "magicwallet-bts-pay",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/angelise7/magicwallet-bts-pay.git"
+  },
+  "author": "angelise7",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/angelise7/magicwallet-bts-pay/issues"
+  },
+  "homepage": "https://github.com/angelise7/magicwallet-bts-pay#readme"
+}
