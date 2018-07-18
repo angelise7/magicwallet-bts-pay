@@ -12,7 +12,7 @@ npm install magicwallet-bts-pay
 1. get bts account
 
 ```
-get_bts_account(function(account){
+magicwallet_get_bts_account(function(account){
   console.log(account)
 },function(error){
   console.log(error)
@@ -22,5 +22,5 @@ get_bts_account(function(account){
 2. confirm pay
 
 ```
-confirm_pay(btsAccount,orderId,storeId)
+magicwallet_confirm_pay(btsAccount,orderId,storeId)
 ```
