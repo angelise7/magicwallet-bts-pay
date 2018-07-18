@@ -49,5 +49,12 @@ function get_bts_account() {
     } else {
       resolve(magicwallet_bts_account)
     }
+
+    setTimeout(() => {
+      if (!magicwallet_bts_account) {
+        reject('error')
+        return
+      }
+    }, 10000);
   })
 }
