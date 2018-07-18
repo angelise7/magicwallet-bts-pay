@@ -1,0 +1,1 @@
+# magicwallet-bts-pay
