@@ -2,22 +2,22 @@ var magicwallet_pay_data;
 var magicwallet_bts_account;
 
 function magicwallet_send_bts_account(data) {
-  magicwallet_bts_account = data.magicwallet_bts_account;
+  magicwallet_bts_account = data;
 }
 
 function magicwallet_get_pay_data() {
   return magicwallet_pay_data
 }
 
-function magicwallet_confirm_pay(btsAccount, orderId, storeId) {
+function magicwallet_confirm_pay(pay_account, pay_asset, pay_amount) {
   return new Promise(function (resolve, reject) {
     magicwallet_pay_data = {
-      btsAccount: btsAccount,
-      orderId: orderId,
-      storeId: storeId,
+      pay_account: pay_account,
+      pay_asset: pay_asset,
+      pay_amount: pay_amount,
     }
 
-    if (!btsAccount || !orderId || !storeId) {
+    if (!pay_account || !pay_asset || !pay_amount) {
       reject('缺少参数');
       return
     }
