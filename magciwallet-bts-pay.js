@@ -9,27 +9,6 @@ function magicwallet_get_pay_data() {
   return magicwallet_pay_data
 }
 
-function magicwallet_confirm_pay(pay_account, pay_asset, pay_amount) {
-  return new Promise(function (resolve, reject) {
-    magicwallet_pay_data = {
-      pay_account: pay_account,
-      pay_asset: pay_asset,
-      pay_amount: pay_amount,
-    }
-
-    if (!pay_account || !pay_asset || !pay_amount) {
-      reject('缺少参数');
-      return
-    }
-
-    if (window) {
-      window.open('close');
-    } else {
-      resolve()
-    }
-  })
-}
-
 function magicwalletGetBtsAccount() {
   return new Promise(function (resolve, reject) {
     if (!magicwallet_bts_account) {
@@ -58,9 +37,30 @@ function magicwallet_timeout_promise(ms) {
   });
 }
 
-function magicwallet_get_bts_account() {
+exports.magicwallet_get_bts_account = function () {
   return Promise.race([
     magicwalletGetBtsAccount(),
     magicwallet_timeout_promise(15000),
   ])
+}
+
+exports.magicwallet_confirm_pay = function (pay_account, pay_asset, pay_amount) {
+  return new Promise(function (resolve, reject) {
+    magicwallet_pay_data = {
+      pay_account: pay_account,
+      pay_asset: pay_asset,
+      pay_amount: pay_amount,
+    }
+
+    if (!pay_account || !pay_asset || !pay_amount) {
+      reject('缺少参数');
+      return
+    }
+
+    if (window) {
+      window.open('close');
+    } else {
+      resolve()
+    }
+  })
 }
