@@ -37,14 +37,14 @@ function magicwallet_timeout_promise(ms) {
   });
 }
 
-exports.magicwallet_get_bts_account = function () {
+function magicwallet_get_bts_account() {
   return Promise.race([
     magicwalletGetBtsAccount(),
     magicwallet_timeout_promise(15000),
   ])
 }
 
-exports.magicwallet_confirm_pay = function (pay_account, pay_asset, pay_amount) {
+function magicwallet_confirm_pay(pay_account, pay_asset, pay_amount) {
   return new Promise(function (resolve, reject) {
     magicwallet_pay_data = {
       pay_account: pay_account,
