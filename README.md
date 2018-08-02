@@ -9,6 +9,11 @@ npm install magicwallet-bts-pay
 
 ### Usage
 
+```
+<script src="magicwallet-bts-pay.js"></script>
+```
+
+
 1. get bts account
 
 ```
