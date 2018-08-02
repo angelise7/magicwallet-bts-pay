@@ -1,4 +1,3 @@
-
 (function (window) {
   if (!window) return;
 
@@ -49,23 +48,25 @@
   }
 
 
-  var magicwallet_confirm_pay = function (pay_account, pay_asset, pay_amount) {
+  var magicwallet_confirm_pay = function (pay_account, pay_asset, pay_amount, order_id) {
     return new Promise(function (resolve, reject) {
       magicwallet_pay_data = {
         pay_account: pay_account,
         pay_asset: pay_asset,
         pay_amount: pay_amount,
+        order_id: order_id,
       }
 
-      if (!pay_account || !pay_asset || !pay_amount) {
+      if (!pay_account || !pay_asset || !pay_amount || !order_id) {
         reject('缺少参数');
         return
       }
 
       if (window) {
+        resolve('pay success')
         window.open('magicWalletBtsPayClose');
       } else {
-        resolve()
+        resolve("cannot close,please route to 'magicWalletBtsPayClose'")
       }
     })
   }
