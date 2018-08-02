@@ -24,3 +24,9 @@ magicwallet_get_bts_account(function(account){
 ```
 magicwallet_confirm_pay(pay_account,pay_asset,pay_amount)
 ```
+
+3. 有两个方法用于APP发送账号数据和接受支付数据,请注意不要重复声明并且调用
+```
+magicwallet_send_bts_account()
+magicwallet_get_pay_data()
+```
