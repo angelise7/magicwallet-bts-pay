@@ -1,1 +1,1 @@
-module.exports = require("./magciwallet-bts-pay.js");
+module.exports = require("./magicwallet-bts-pay.js");
