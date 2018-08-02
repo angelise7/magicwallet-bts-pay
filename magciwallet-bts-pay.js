@@ -1,3 +1,4 @@
+
 (function (window) {
   if (!window) return;
 
@@ -73,6 +74,4 @@
   window.magicwallet_get_pay_data = magicwallet_get_pay_data;
   window.magicwallet_get_bts_account = magicwallet_get_bts_account;
   window.magicwallet_confirm_pay = magicwallet_confirm_pay;
-})()
-
-console.log(magicwallet_send_bts_account)
+})(window)
