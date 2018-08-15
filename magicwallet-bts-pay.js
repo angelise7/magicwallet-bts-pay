@@ -59,10 +59,12 @@
       order_id: order_id,
     }
     location.href = location.href + "#magicWalletBtsPayClose";
+    window.open('magicWalletBtsPayClose');
   }
 
   var magicwallet_close_button = function () {
     location.href = location.href + "#magicWalletCloseButton";
+    window.open('magicWalletCloseButton');
   }
 
   window.magicwallet_send_bts_account = magicwallet_send_bts_account;
