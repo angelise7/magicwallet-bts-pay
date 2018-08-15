@@ -49,30 +49,25 @@
 
 
   var magicwallet_confirm_pay = function (pay_account, pay_asset, pay_amount, order_id) {
-    return new Promise(function (resolve, reject) {
-      magicwallet_pay_data = {
-        pay_account: pay_account,
-        pay_asset: pay_asset,
-        pay_amount: pay_amount,
-        order_id: order_id,
-      }
+    if (!pay_account || !pay_asset || !pay_amount || !order_id) {
+      return
+    }
+    magicwallet_pay_data = {
+      pay_account: pay_account,
+      pay_asset: pay_asset,
+      pay_amount: pay_amount,
+      order_id: order_id,
+    }
+    location.href = location.href + "#magicWalletBtsPayClose";
+  }
 
-      if (!pay_account || !pay_asset || !pay_amount || !order_id) {
-        reject('缺少参数');
-        return
-      }
-
-      if (window) {
-        resolve('pay success')
-        window.open('magicWalletBtsPayClose');
-      } else {
-        resolve("cannot close,please route to 'magicWalletBtsPayClose'")
-      }
-    })
+  var magicwallet_close_button = function () {
+    location.href = location.href + "#magicWalletCloseButton";
   }
 
   window.magicwallet_send_bts_account = magicwallet_send_bts_account;
   window.magicwallet_get_pay_data = magicwallet_get_pay_data;
   window.magicwallet_get_bts_account = magicwallet_get_bts_account;
   window.magicwallet_confirm_pay = magicwallet_confirm_pay;
+  window.magicwallet_close_button = magicwallet_close_button;
 })(window)
