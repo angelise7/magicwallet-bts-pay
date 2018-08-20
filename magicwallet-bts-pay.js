@@ -68,6 +68,10 @@
   }
 
   var magicwallet_close_button = function (platform) {
+    if (!platform) {
+      return
+    }
+
     if (platform == 'ios') {
       location.href = location.href + "#magicWalletCloseButton";
     } else if ('android') {
