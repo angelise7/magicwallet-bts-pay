@@ -2,13 +2,13 @@
   if (!window) return;
 
   var magicwallet_bts_account;
+  var magicwallet_pay_data;
 
   var magicwallet_send_bts_account = function (data) {
     magicwallet_bts_account = data;
   }
 
   var magicwallet_get_pay_data = function () {
-    var magicwallet_pay_data = JSON.parse(localStorage.getItem('magicwallet_pay_data'))
     return magicwallet_pay_data;
   }
 
@@ -48,22 +48,31 @@
   }
 
 
-  var magicwallet_confirm_pay = function (pay_account, pay_asset, pay_amount, order_id) {
-    if (!pay_account || !pay_asset || !pay_amount || !order_id) {
+  var magicwallet_confirm_pay = function (pay_account, pay_asset, pay_amount, order_id, platform) {
+    if (!pay_account || !pay_asset || !pay_amount || !order_id || !platform) {
       return
     }
-    var magicwallet_pay_data = {
+    magicwallet_pay_data = {
       pay_account: pay_account,
       pay_asset: pay_asset,
       pay_amount: pay_amount,
       order_id: order_id,
     }
-    localStorage.setItem('magicwallet_pay_data', JSON.stringify(magicwallet_pay_data));
-    location.href = location.href + "&magicWalletBtsPayClose";
+
+
+    if (platform == 'ios') {
+      location.href = location.href + "#magicWalletBtsPayClose";
+    } else if ('android') {
+      location.href = location.href + "&magicWalletBtsPayClose";
+    }
   }
 
-  var magicwallet_close_button = function () {
-    location.href = location.href + "&magicWalletCloseButton";
+  var magicwallet_close_button = function (platform) {
+    if (platform == 'ios') {
+      location.href = location.href + "#magicWalletCloseButton";
+    } else if ('android') {
+      location.href = location.href + "&magicWalletCloseButton";
+    }
   }
 
   window.magicwallet_send_bts_account = magicwallet_send_bts_account;
