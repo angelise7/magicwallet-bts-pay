@@ -1,7 +1,6 @@
 (function (window) {
   if (!window) return;
 
-  var magicwallet_pay_data;
   var magicwallet_bts_account;
 
   var magicwallet_send_bts_account = function (data) {
@@ -9,7 +8,8 @@
   }
 
   var magicwallet_get_pay_data = function () {
-    return magicwallet_pay_data
+    var magicwallet_pay_data = JSON.parse(localStorage.getItem('magicwallet_pay_data'))
+    return magicwallet_pay_data;
   }
 
   var magicwalletGetBtsAccount = function () {
@@ -52,12 +52,13 @@
     if (!pay_account || !pay_asset || !pay_amount || !order_id) {
       return
     }
-    magicwallet_pay_data = {
+    var magicwallet_pay_data = {
       pay_account: pay_account,
       pay_asset: pay_asset,
       pay_amount: pay_amount,
       order_id: order_id,
     }
+    localStorage.setItem('magicwallet_pay_data', JSON.stringify(magicwallet_pay_data));
     location.href = location.href + "&magicWalletBtsPayClose";
   }
 
