@@ -74,7 +74,7 @@
 
     if (platform == 'ios') {
       location.href = location.href + "#magicWalletCloseButton";
-    } else if ('android') {
+    } else if (platform == 'android') {
       location.href = location.href + "&magicWalletCloseButton";
     }
   }
