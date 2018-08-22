@@ -5,6 +5,11 @@
   var magicwallet_pay_data;
 
   var magicwallet_send_bts_account = function (data) {
+    var magicwalletBtsAccount = JSON.parse(localStorage.getItem('magicwallet_pay_data'));
+    if (magicwalletBtsAccount) {
+      magicwallet_bts_account = magicwalletBtsAccount;
+    }
+
     magicwallet_bts_account = data;
   }
 
@@ -63,7 +68,8 @@
     if (platform == 'ios') {
       location.href = location.href + '#magicWalletBtsPayClose';
     } else if ('android') {
-      window.open('magicWalletBtsPayClose');
+      localStorage.setItem('magicwallet_pay_data', JSON.stringify(magicwallet_pay_data));
+      location.href = location.href + '&magicWalletBtsPayClose';
     }
   }
 
@@ -75,7 +81,7 @@
     if (platform == 'ios') {
       location.href = location.href + "#magicWalletCloseButton";
     } else if (platform == 'android') {
-      window.open('magicWalletCloseButton');
+      location.href = location.href + '&magicWalletCloseButton';
     }
   }
 
