@@ -61,9 +61,9 @@
 
 
     if (platform == 'ios') {
-      location.href = location.href + "#magicWalletBtsPayClose";
+      location.href = location.href + '#magicWalletBtsPayClose';
     } else if ('android') {
-      location.href = location.href + "&magicWalletBtsPayClose";
+      window.open('magicWalletBtsPayClose');
     }
   }
 
@@ -75,7 +75,7 @@
     if (platform == 'ios') {
       location.href = location.href + "#magicWalletCloseButton";
     } else if (platform == 'android') {
-      location.href = location.href + "&magicWalletCloseButton";
+      window.open('magicWalletCloseButton');
     }
   }
 
