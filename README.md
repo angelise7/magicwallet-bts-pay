@@ -27,7 +27,7 @@ magicwallet_get_bts_account(function(account){
 2. confirm pay
 
 ```
-magicwallet_confirm_pay(pay_account,pay_asset,pay_amount,order_id,platform)
+magicwallet_confirm_pay(pay_account,pay_asset,pay_amount,order_id)
 ```
 
 3. close
@@ -39,5 +39,5 @@ magicwallet_close_button(platform)
 4. 有两个方法用于APP发送账号数据和接受支付数据,请注意不要重复声明并且调用
 ```
 magicwallet_send_bts_account()
-magicwallet_get_pay_data()
+magicwallet_get_pay_params()
 ```
