@@ -2,19 +2,9 @@
   if (!window) return;
 
   var magicwallet_bts_account;
-  var magicwallet_pay_data;
 
   var magicwallet_send_bts_account = function (data) {
     magicwallet_bts_account = data;
-  }
-
-  var magicwallet_get_pay_data = function () {
-    var magicwalletPayData = JSON.parse(localStorage.getItem('magicwallet_pay_data'));
-    if (magicwalletPayData) {
-      magicwallet_pay_data = magicwalletPayData;
-    }
-
-    return magicwallet_pay_data;
   }
 
   var magicwalletGetBtsAccount = function () {
@@ -53,24 +43,24 @@
   }
 
 
-  var magicwallet_confirm_pay = function (pay_account, pay_asset, pay_amount, order_id, platform) {
-    if (!pay_account || !pay_asset || !pay_amount || !order_id || !platform) {
+  var magicwallet_confirm_pay = function (pay_account, pay_asset, pay_amount, order_id) {
+    if (!pay_account || !pay_asset || !pay_amount || !order_id) {
       return
     }
-    magicwallet_pay_data = {
-      pay_account: pay_account,
-      pay_asset: pay_asset,
-      pay_amount: pay_amount,
-      order_id: order_id,
-    }
+    location.href = "https://magicwallet-btspay.magicw.net?pay_account=" + pay_account + "&pay_asset=" + pay_asset + "&pay_amount=" + pay_amount + "&order_id=" + order_id;
+  }
 
-
-    if (platform == 'ios') {
-      location.href = location.href + '#magicWalletBtsPayClose';
-    } else if ('android') {
-      localStorage.setItem('magicwallet_pay_data', JSON.stringify(magicwallet_pay_data));
-      location.href = location.href + '&magicWalletBtsPayClose';
+  var magicwallet_get_pay_params = function getParams() {
+    var url = window.location.search;
+    var theRequest = new Object();
+    if (url.indexOf("?") != -1) {
+      var str = url.substr(1);
+      strs = str.split("&");
+      for (var i = 0; i < strs.length; i++) {
+        theRequest[strs[i].split("=")[0]] = decodeURI(strs[i].split("=")[1]);
+      }
     }
+    return theRequest;
   }
 
   var magicwallet_close_button = function (platform) {
@@ -86,8 +76,8 @@
   }
 
   window.magicwallet_send_bts_account = magicwallet_send_bts_account;
-  window.magicwallet_get_pay_data = magicwallet_get_pay_data;
   window.magicwallet_get_bts_account = magicwallet_get_bts_account;
   window.magicwallet_confirm_pay = magicwallet_confirm_pay;
   window.magicwallet_close_button = magicwallet_close_button;
+  window.magicwallet_get_pay_params = magicwallet_get_pay_params;
 })(window)
