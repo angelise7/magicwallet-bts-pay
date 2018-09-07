@@ -30,7 +30,7 @@ magicwallet_get_bts_account(function(account){
 magicwallet_confirm_pay(pay_account,pay_asset,pay_amount,order_id)
 ```
 
-3. close
+3. close(用于关闭页面使用)
 
 ```
 magicwallet_close_button(platform)
